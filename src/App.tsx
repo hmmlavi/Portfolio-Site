@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Cursor from "@/components/Cursor";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -74,6 +75,7 @@ export default function App() {
         </main>
       )}
       <Footer onNavigate={navigate} />
+      <Analytics />
     </div>
   );
 }
