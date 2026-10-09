@@ -1,0 +1,9 @@
+# robots.txt — lakshitss.vercel.app
+# Public portfolio. Everything here is meant to be crawled.
+
+User-agent: *
+Allow: /
+
+# No private areas exist on this site. Nothing is disallowed.
+
+Sitemap: https://lakshitss.vercel.app/sitemap.xml

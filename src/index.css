@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+/* ============================================================
+   Theme tokens. Everything is a mutable custom property, so
+   flipping [data-theme] reskins the whole site in one step.
+   --c-white is the alpha tint source: overriding it in light
+   mode turns every white/[0.0x] utility into an ink tint.
+   ============================================================ */
+:root,
+[data-theme='dark'] {
+  --c-base: #08090c;
+  --c-raise: #0d0f14;
+  --c-ink: #ededf0;
+  --c-dim: #9c9fa9;
+  --c-faint: #6f737e;
+  --c-glow: #8b9dff;
+  --c-mist: #76ddc6;
+  --c-peach: #f5b97c;
+  --c-lilac: #b9a6f7;
+  --c-sky: #7cc4f5;
+  --c-leaf: #86d99b;
+  --c-rose: #f5a3bd;
+
+  --c-white: #ffffff;
+  --c-oncolor: #0a0c10;
+  --c-solid: #0d0f14;
+
+  --glass-bg: rgb(255 255 255 / 0.04);
+  --glass-border: rgb(255 255 255 / 0.08);
+  --glass-inset: rgb(255 255 255 / 0.04);
+  --glass-shadow: 0 20px 50px -20px rgb(0 0 0 / 0.5);
+
+  --cell-0: rgb(255 255 255 / 0.055);
+  --cell-1: rgb(139 157 255 / 0.3);
+  --cell-2: rgb(139 157 255 / 0.5);
+  --cell-3: rgb(139 157 255 / 0.74);
+  --cell-4: #8b9dff;
+
+  --aurora-a: rgba(110, 128, 255, 0.14);
+  --aurora-b: rgba(118, 221, 198, 0.08);
+  --aura-opacity: 1;
+  --vignette: rgb(8 9 12 / 0.8);
+  --scroll-thumb: rgb(255 255 255 / 0.1);
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --c-base: #f4f5f7;
+  --c-raise: #ffffff;
+  --c-ink: #13151a;
+  --c-dim: #4e525c;
+  --c-faint: #6b6f79;
+  --c-glow: #4553c9;
+  --c-mist: #0d8872;
+  --c-peach: #9c5f16;
+  --c-lilac: #6648c4;
+  --c-sky: #13679f;
+  --c-leaf: #237a44;
+  --c-rose: #bb3660;
+
+  --c-white: #0b0d12;
+  --c-oncolor: #ffffff;
+  --c-solid: #ffffff;
+
+  --glass-bg: rgb(255 255 255 / 0.72);
+  --glass-border: rgb(11 13 18 / 0.1);
+  --glass-inset: rgb(255 255 255 / 0.7);
+  --glass-shadow: 0 16px 40px -20px rgb(11 13 18 / 0.2);
+
+  --cell-0: rgb(11 13 18 / 0.07);
+  --cell-1: rgb(69 83 201 / 0.3);
+  --cell-2: rgb(69 83 201 / 0.52);
+  --cell-3: rgb(69 83 201 / 0.74);
+  --cell-4: #4553c9;
+
+  --aurora-a: rgba(110, 128, 255, 0.18);
+  --aurora-b: rgba(13, 136, 114, 0.1);
+  --aura-opacity: 0.45;
+  --vignette: rgb(244 245 247 / 0.75);
+  --scroll-thumb: rgb(11 13 18 / 0.18);
+  color-scheme: light;
+}
+
+@theme {
+  --color-base: var(--c-base);
+  --color-raise: var(--c-raise);
+  --color-ink: var(--c-ink);
+  --color-dim: var(--c-dim);
+  --color-faint: var(--c-faint);
+  --color-glow: var(--c-glow);
+  --color-mist: var(--c-mist);
+  --color-peach: var(--c-peach);
+  --color-lilac: var(--c-lilac);
+  --color-sky: var(--c-sky);
+  --color-leaf: var(--c-leaf);
+  --color-rose: var(--c-rose);
+  --color-oncolor: var(--c-oncolor);
+  --color-solid: var(--c-solid);
+  --color-white: var(--c-white);
+
+  --font-display: 'Inter Tight', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+html {
+  background: var(--c-base);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--c-base);
+  color: var(--c-ink);
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-synthesis-weight: none;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Display type: tight, confident, engineered. */
+h1, h2, h3 {
+  letter-spacing: -0.028em;
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.font-mono,
+code, pre, kbd {
+  font-feature-settings: 'zero', 'ss01';
+  letter-spacing: -0.01em;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--c-glow) 28%, transparent);
+  color: var(--c-ink);
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--c-base); }
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 99px;
+  border: 3px solid var(--c-base);
+}
+::-webkit-scrollbar-thumb:hover { background: color-mix(in oklab, var(--c-glow) 50%, transparent); }
+
+/* ---------- surfaces ---------- */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-inset), var(--glass-shadow);
+  transition: background-color 0.35s ease, border-color 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-lift:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--c-glow) 26%, transparent);
+}
+
+.hairline {
+  border-color: var(--glass-border);
+}
+
+.vignette {
+  background: radial-gradient(ellipse 88% 68% at 50% 38%, transparent 42%, var(--vignette) 100%);
+}
+
+/* ---------- render economy ----------
+   Off-screen home sections are skipped by layout and paint entirely. The
+   browser reserves space with the intrinsic size, so there is no jump. */
+@supports (content-visibility: auto) {
+  #about, #domains, #work, #github, #journey, #stack, #terminal, #faq, #contact {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+}
+
+/* Promote the always-moving layers to their own composites. */
+.drift,
+.scan-line,
+.signal-track {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ---------- motion ---------- */
+@keyframes blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+.caret-blink { animation: blink 1.05s step-end infinite; }
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1) }
+  50% { opacity: 0.35; transform: scale(0.7) }
+}
+.pulse-dot { animation: pulseDot 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.6 }
+  50% { transform: scale(1.3); opacity: 1 }
+}
+.breathe { animation: breathe 2.4s ease-in-out infinite; }
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1) }
+  33% { transform: translate3d(20px, -16px, 0) scale(1.04) }
+  66% { transform: translate3d(-14px, 12px, 0) scale(0.98) }
+}
+.drift { animation: drift 22s ease-in-out infinite; }
+
+@keyframes signal-scroll { to { transform: translate3d(-50%, 0, 0) } }
+.signal-track { animation: signal-scroll 44s linear infinite; }
+.signal-track:hover { animation-play-state: paused; }
+
+@keyframes scan-drop {
+  0% { top: -10%; opacity: 0 }
+  10% { opacity: 0.45 }
+  90% { opacity: 0.45 }
+  100% { top: 105%; opacity: 0 }
+}
+.scan-line { animation: scan-drop 11s linear infinite; }
+
+.term-input:focus { outline: none; }
+
+/* ---------- accessibility ---------- */
+:where(a, button, input, textarea, select, [tabindex], summary):focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--c-glow) 85%, transparent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: fixed;
+  top: -64px;
+  left: 16px;
+  z-index: 400;
+  border-radius: 8px;
+  background: var(--c-glow);
+  color: var(--c-oncolor);
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: top 0.25s ease;
+}
+.skip-link:focus { top: 14px; outline: none; }
+
+/* ---------- pointer ---------- */
+.cursor-dot {
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 9999;
+  background: #fff;
+  border-radius: 9999px;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  contain: strict;
+  transition: opacity 0.25s ease;
+}
+
+.aura, .spotlight {
+  pointer-events: none;
+  will-change: transform;
+  contain: strict;
+  border-radius: 9999px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: var(--aura-opacity);
+  transition: opacity 0.25s ease;
+}
+.aura {
+  z-index: 75;
+  background: radial-gradient(circle, rgba(110, 128, 255, 0.07) 0%, rgba(118, 221, 198, 0.025) 45%, transparent 70%);
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+}
+.spotlight {
+  z-index: 74;
+  background: radial-gradient(circle, rgba(110, 128, 255, 0.085) 0%, rgba(124, 196, 245, 0.03) 40%, transparent 68%);
+  width: 520px;
+  height: 520px;
+  margin: -260px 0 0 -260px;
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor * { cursor: none !important; }
+
+html.cursor-off .cursor-dot,
+html.cursor-off .aura,
+html.cursor-off .spotlight { opacity: 0; }
+
+/* ---------- glass halo spotlight ----------
+   Each `.glass` panel carries a faint glow under its edge that follows the
+   pointer. One delegated listener in GlassHalo writes --mx/--my per card. */
+.glass {
+  position: relative;
+  isolation: isolate;
+}
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--c-glow) 16%, transparent),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.glass:hover::before {
+  opacity: 1;
+}
+
+/* ---------- chapter numerals ---------- */
+.ghost-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--c-white) 9%, transparent);
+}
+
+/* ---------- anti-copy hardening ----------
+   Note: this is a deterrent, not enforcement. DevTools can bypass it. */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+input,
+textarea,
+[contenteditable='true'],
+.term-input {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift, .breathe, .pulse-dot, .signal-track, .scan-line { animation: none !important; }
+  .cursor-dot, .aura, .spotlight { display: none !important; }
+  * { transition-duration: 0.01ms !important; }
+}

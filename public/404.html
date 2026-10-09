@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found | Lakshit Singh Saini</title>
+    <meta
+      name="description"
+      content="That page does not exist. Use the links here to get back to the homepage, the project work, or the contact details."
+    />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#070b12" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem('theme');
+          var t = s || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <style>
+      :root, [data-theme='dark'] {
+        --base: #070b12; --ink: #e9edf5; --dim: #9aa3b6; --faint: #7d8598;
+        --glow: #96a7ff; --oncolor: #0a0f1c;
+        --panel: rgba(255, 255, 255, 0.045); --line: rgba(255, 255, 255, 0.07);
+        --aurora: rgba(120, 137, 255, 0.16);
+        color-scheme: dark;
+      }
+      [data-theme='light'] {
+        --base: #eff2f8; --ink: #151b27; --dim: #4d5666; --faint: #6c7483;
+        --glow: #4a5bd0; --oncolor: #ffffff;
+        --panel: rgba(255, 255, 255, 0.68); --line: rgba(13, 23, 38, 0.1);
+        --aurora: rgba(120, 137, 255, 0.2);
+        color-scheme: light;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; min-height: 100vh; background: var(--base); color: var(--ink);
+        font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+        display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem;
+        position: relative; overflow-x: hidden;
+      }
+      .orb {
+        position: fixed; width: 520px; height: 520px; border-radius: 9999px;
+        background: radial-gradient(circle, var(--aurora) 0%, transparent 62%);
+        filter: blur(40px); pointer-events: none; top: -120px; left: 5%;
+      }
+      .orb2 { top: auto; bottom: -160px; left: auto; right: -5%; width: 460px; height: 460px; }
+      main { position: relative; width: 100%; max-width: 46rem; }
+      .kicker {
+        font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.4em;
+        text-transform: uppercase; color: var(--glow); margin: 0;
+      }
+      h1 {
+        font-size: clamp(2.2rem, 7vw, 3.6rem); font-weight: 600; letter-spacing: -0.02em;
+        margin: 1.25rem 0 0; line-height: 1.08;
+      }
+      p.lead { color: var(--dim); font-size: 15px; line-height: 1.7; margin: 1rem 0 0; max-width: 34rem; }
+      .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 9999px;
+        padding: 0.8rem 1.5rem; font-size: 14px; font-weight: 600; text-decoration: none;
+        transition: opacity 0.25s ease, background-color 0.25s ease;
+      }
+      .btn-primary { background: var(--glow); color: var(--oncolor); }
+      .btn-primary:hover { opacity: 0.9; }
+      .btn-ghost { background: var(--panel); border: 1px solid var(--line); color: var(--ink); font-weight: 500; }
+      .divider { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+      .label {
+        font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em;
+        text-transform: uppercase; color: var(--faint); margin: 0 0 1rem;
+      }
+      .grid { display: grid; gap: 0.5rem; grid-template-columns: 1fr; }
+      @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+      .card {
+        display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+        background: var(--panel); border: 1px solid var(--line); border-radius: 0.75rem;
+        padding: 0.85rem 1rem; text-decoration: none; transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+      .card:hover { transform: translateY(-2px); border-color: color-mix(in oklab, var(--glow) 30%, transparent); }
+      .card strong { display: block; font-size: 14px; font-weight: 500; color: var(--ink); }
+      .card span { display: block; font-size: 12px; color: var(--faint); }
+      .card em { font-style: normal; color: var(--faint); }
+      .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+      .pill {
+        background: var(--panel); border: 1px solid var(--line); border-radius: 0.4rem;
+        padding: 0.4rem 0.85rem; font-size: 12px; color: var(--dim); text-decoration: none;
+      }
+      .pill:hover { color: var(--ink); }
+      :focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <div class="orb" aria-hidden="true"></div>
+    <div class="orb orb2" aria-hidden="true"></div>
+
+    <main>
+      <p class="kicker">Error 404</p>
+      <h1>This page doesn&rsquo;t exist.</h1>
+      <p class="lead">
+        Either the link was wrong, or I moved something and forgot to leave a forwarding
+        address. Both are genuinely possible. Here&rsquo;s the way back.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="/">&larr;&nbsp; Back to the homepage</a>
+        <a class="btn btn-ghost" href="https://github.com/hmmlavi" rel="noreferrer">Browse my GitHub</a>
+      </div>
+
+      <div class="divider">
+        <p class="label">Or jump straight to</p>
+        <div class="grid">
+          <a class="card" href="/#work">
+            <span><strong>Selected builds</strong><span>the projects I&rsquo;ve shipped</span></span><em>&rarr;</em>
+          </a>
+          <a class="card" href="/#github">
+            <span><strong>Live GitHub activity</strong><span>repos and contributions</span></span><em>&rarr;</em>
+          </a>
+          <a class="card" href="/#stack">
+            <span><strong>Tools of the trade</strong><span>the languages I work in</span></span><em>&rarr;</em>
+          </a>
+          <a class="card" href="/#contact">
+            <span><strong>Get in touch</strong><span>email and socials</span></span><em>&rarr;</em>
+          </a>
+        </div>
+
+        <p class="label" style="margin-top: 2rem">Site policies</p>
+        <div class="pills">
+          <a class="pill" href="/privacy">Privacy Policy</a>
+          <a class="pill" href="/terms">Terms &amp; Conditions</a>
+          <a class="pill" href="/cookies">Cookie Policy</a>
+          <a class="pill" href="/refund">Refund Policy</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
